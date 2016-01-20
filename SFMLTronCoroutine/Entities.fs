@@ -33,7 +33,7 @@ and Player =
     Name    : string
     ID      : int
     Body    : Body
-    IB      : InputBehavior<Player>
+    IB      : InputBehavior<Body>
   }with
   static member Update : Coroutine<World, Player, bool> =
     fun w (s:Player) ->
@@ -50,7 +50,7 @@ and Bullet =
   {
     ID      : int
     Body    : Body
-    IB      : InputBehavior<Bullet>
+    IB      : InputBehavior<Body>
   }with
   static member Update : Coroutine<World, Bullet, bool> =
     fun w (s:Bullet) ->
@@ -64,7 +64,7 @@ and Obstacle =
   {
     ID      : int
     Body    : Body
-    IB      : InputBehavior<Obstacle>
+    IB      : InputBehavior<Body>
   }with
   static member Update : Coroutine<World, Obstacle, bool> =
     fun w (s:Obstacle) ->

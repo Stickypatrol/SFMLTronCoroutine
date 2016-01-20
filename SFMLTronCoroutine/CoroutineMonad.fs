@@ -18,6 +18,9 @@ type CoroutineBuilder() =
   member this.Return(x: 'a): Coroutine<'w, 's, 'a> = ret x
   member this.ReturnFrom(s: Coroutine<'w, 's, 'a>) = s
   member this.Bind(p, k) = bind(p, k)
+  member this.Combine(p, k) = bind(p, fun _ -> k)
+  member this.Delay f = f
+  member this.Zero() = ret ()
   member this.For(s:seq<'a>, k:'a->Coroutine<'w, 's, Unit>) : Coroutine<'w, 's, Unit> =
     if s |> Seq.isEmpty then
       ret ()
